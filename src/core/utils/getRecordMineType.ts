@@ -1,23 +1,23 @@
 export interface RecordMineType {
-  extension: 'webm' | 'mp4';
-  mineType: 'audio/webm' | 'audio/mp4';
+  extension: 'webm' | 'mp4' | 'mp3' | 'wav';
+  mineType: 'audio/webm' | 'audio/mp4' | 'audio/wav' | 'audio/mp3';
 }
 
 export const getRecordMineType = (): RecordMineType => {
   try {
-    return MediaRecorder.isTypeSupported('audio/webm')
+    return MediaRecorder.isTypeSupported('audio/wav')
       ? {
-          extension: 'webm',
-          mineType: 'audio/webm',
+          extension: 'wav',
+          mineType: 'audio/wav',
         }
       : {
-          extension: 'mp4',
-          mineType: 'audio/mp4',
+          extension: 'mp3',
+          mineType: 'audio/mp3',
         };
   } catch {
     return {
-      extension: 'webm',
-      mineType: 'audio/webm',
+      extension: 'wav',
+      mineType: 'audio/wav',
     };
   }
 };
